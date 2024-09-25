@@ -5,7 +5,7 @@ This repository contains exercises and projects developed during the **Data Stru
 ## Contents
 
 - **Linked Lists**  
-  Implementation of 
+  Implementation of linked lists.
 
 ## Technologies
 
