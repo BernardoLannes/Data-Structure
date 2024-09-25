@@ -15,4 +15,4 @@ This repository contains exercises and projects developed during the **Data Stru
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/BernardoLannes/data-structures.git
+   git clone https://github.com/BernardoLannes/Data-Structure.git
