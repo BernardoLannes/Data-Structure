@@ -178,6 +178,34 @@ void print_leaf_nodes(tree_node *root)
     print_leaf_nodes(root->right);
 }
 
+int height(tree_node *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+
+    int lHeight = height(root->left);
+    int rHeight = height(root->right);
+
+    return (lHeight > rHeight ? lHeight : rHeight) + 1;
+}
+
+int is_balanced(tree_node *root)
+{
+    if (root == NULL)
+    {
+        return 1;
+    }
+
+    if (abs(height(root->left) - height(root->right)) > 1)
+    {
+        return 0;
+    }
+
+    return (is_balanced(root->left) && is_balanced(root->right));
+}
+
 int menu(tree_node **root)
 {
     int temp;
