@@ -206,6 +206,26 @@ int is_balanced(tree_node *root)
     return (is_balanced(root->left) && is_balanced(root->right));
 }
 
+int count_nodes(tree_node *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+
+    return 1 + count_nodes(root->left) + count_nodes(root->right);
+}
+
+int is_full(tree_node *root)
+{
+    if (root == NULL)
+    {
+        return 1;
+    }
+
+    //  int nElements = count_nodes(root);
+}
+
 int menu(tree_node **root)
 {
     int temp;
