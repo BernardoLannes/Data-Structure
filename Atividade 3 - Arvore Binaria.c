@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #ifdef __linux__
 #include <unistd.h>
@@ -102,7 +103,8 @@ void print_tree(tree_node *root, int mode)
         print_tree(root->right, mode);
         printf("%d ", root->data);
         break;
-
+    case 4: // Length
+        break;
     default:
         printf("Invalid print mode.");
         break;
@@ -218,12 +220,18 @@ int count_nodes(tree_node *root)
 
 int is_full(tree_node *root)
 {
-    if (root == NULL)
+    if (root != NULL)
     {
-        return 1;
+        int nElements = count_nodes(root);
+        int nHeight = height(root);
+
+        if (nElements != pow(2, nHeight) - 1)
+        {
+            return 0;
+        }
     }
 
-    //  int nElements = count_nodes(root);
+    return 1;
 }
 
 int menu(tree_node **root)
@@ -238,7 +246,9 @@ int menu(tree_node **root)
     printf("\t3. Verificar se um dado esta na arvore\n");
     printf("\t4. Contar numero de elementos da arvore\n");
     printf("\t5. Imprimir os nos folhas\n");
-    printf("\t6. Sair\n");
+    printf("\t6. Verificar se a arvore esta balanceada");
+    printf("\t7. Verificar se a arvore eh cheia");
+    printf("\t9. Sair\n");
 
     printf("\nSelecione a opcao: ");
     scanf("%d", &temp);
@@ -274,6 +284,7 @@ int menu(tree_node **root)
         printf("\t1. Pre-ordem\n");
         printf("\t2. Em ordem\n");
         printf("\t3. Pos-ordem\n");
+        printf("\t4. Em largura\n");
 
         printf("\nSelecione a opcao: ");
         scanf("%d", &temp);
@@ -321,7 +332,7 @@ int menu(tree_node **root)
         scanf("%s", aux);
         fflush(stdin);
         break;
-    case 6:
+    case 9:
         printf("Fechando o programa...");
         free_tree(*root);
         mySleep(1000);
