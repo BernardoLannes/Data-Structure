@@ -345,7 +345,20 @@ int menu(tree_node **root)
         scanf("%s", aux);
         fflush(stdin);
         break;
-
+    case 7:
+        if (is_full(*root))
+        {
+            printf("\nA arvore eh cheia");
+        }
+        else
+        {
+            printf("A arvore nao eh cheia");
+        }
+        printf("\nAperte enter...");
+        scanf("%s", aux);
+        fflush(stdin);
+        break;
+    case 8:
     case 9:
         printf("Fechando o programa...");
         free_tree(*root);
