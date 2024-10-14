@@ -332,6 +332,20 @@ int menu(tree_node **root)
         scanf("%s", aux);
         fflush(stdin);
         break;
+    case 6:
+        if (is_balanced(*root))
+        {
+            printf("A arvore esta balanceada");
+        }
+        else
+        {
+            printf("A arvore nao esta balanceada");
+        }
+        printf("\nAperte enter...");
+        scanf("%s", aux);
+        fflush(stdin);
+        break;
+
     case 9:
         printf("Fechando o programa...");
         free_tree(*root);
