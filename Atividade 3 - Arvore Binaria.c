@@ -343,8 +343,8 @@ int menu(tree_node **root)
         printf("Arvore:\n");
         print_tree(*root, temp);
         printf("\nAperte enter...");
-        scanf("%s", aux);
-        fflush(stdin);
+        getchar();
+        getchar();
         break;
     case 3:
         printf("Dado procurado: ");
@@ -359,8 +359,8 @@ int menu(tree_node **root)
             printf("\nO dado nao esta na arvore.");
         }
         printf("\nAperte enter...");
-        scanf("%s", aux);
-        fflush(stdin);
+        getchar();
+        getchar();
         break;
     case 4:
         printf("Dado procurado: ");
@@ -370,15 +370,15 @@ int menu(tree_node **root)
         clearScreen();
         printf("O dado aparece %d vezes na arvore", count_elements(*root, temp));
         printf("\nAperte enter...");
-        scanf("%s", aux);
-        fflush(stdin);
+        getchar();
+        getchar();
         break;
     case 5:
         printf("Nos folhas: ");
         print_leaf_nodes(*root);
         printf("\nAperte enter...");
-        scanf("%s", aux);
-        fflush(stdin);
+        getchar();
+        getchar();
         break;
     case 6:
         if (is_balanced(*root))
@@ -390,8 +390,8 @@ int menu(tree_node **root)
             printf("A arvore nao esta balanceada");
         }
         printf("\nAperte enter...");
-        scanf("%s", aux);
-        fflush(stdin);
+        getchar();
+        getchar();
         break;
     case 7:
         if (is_full(*root))
@@ -403,8 +403,8 @@ int menu(tree_node **root)
             printf("A arvore nao eh cheia");
         }
         printf("\nAperte enter...");
-        scanf("%s", aux);
-        fflush(stdin);
+        getchar();
+        getchar();
         break;
     case 8:
         printf("Nivel a ser imprimido: ");
@@ -413,8 +413,8 @@ int menu(tree_node **root)
         print_level(*root, temp);
 
         printf("\nAperte enter...");
-        scanf("%s", aux);
-        fflush(stdin);
+        getchar();
+        getchar();
         break;
     case 9:
         printf("Fechando o programa...");
