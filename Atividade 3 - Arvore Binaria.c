@@ -233,6 +233,24 @@ int is_full(tree_node *root)
     return 1;
 }
 
+void print_level(tree_node *root, int level)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    if (level == 1)
+    {
+        printf("%d\n", root->data);
+    }
+    else if (level > 1)
+    {
+        print_level(root->left, level - 1);
+        print_level(root->right, level - 1);
+    }
+}
+
 int menu(tree_node **root)
 {
     int temp;
@@ -247,7 +265,7 @@ int menu(tree_node **root)
     printf("\t5. Imprimir os nos folhas\n");
     printf("\t6. Verificar se a arvore esta balanceada\n");
     printf("\t7. Verificar se a arvore eh cheia\n");
-    printf("\t8. Imprimir por nivel");
+    printf("\t8. Imprimir por nivel\n");
     printf("\t9. Sair\n");
 
     printf("\nSelecione a opcao: ");
@@ -359,6 +377,14 @@ int menu(tree_node **root)
         fflush(stdin);
         break;
     case 8:
+        printf("Nivel a ser imprimido: ");
+        scanf("%d", &temp);
+
+        print_level(*root, temp);
+
+        printf("\nAperte enter...");
+        scanf("%s", aux);
+        fflush(stdin);
         break;
     case 9:
         printf("Fechando o programa...");
