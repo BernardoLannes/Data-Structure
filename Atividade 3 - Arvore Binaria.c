@@ -9,6 +9,23 @@
 #else
 #endif
 
+void clearScreen();
+void mySleep(int tempoMs);
+tree_node *create_tree_node(int data);
+tree_node *insert_tree_node(tree_node *root, int data);
+void free_tree(tree_node *root);
+void print_tree(tree_node *root, int mode);
+int is_in_tree(tree_node *root, int value);
+tree_node *read_tree(FILE *file);
+int count_elements(tree_node *root, int element);
+void print_leaf_nodes(tree_node *root);
+int height(tree_node *root);
+int is_balanced(tree_node *root);
+int count_nodes(tree_node *root);
+int is_full(tree_node *root);
+void print_level(tree_node *root, int level);
+int menu(tree_node **root);
+
 void clearScreen()
 {
 #ifdef __linux__
@@ -242,7 +259,7 @@ void print_level(tree_node *root, int level)
 
     if (level == 1)
     {
-        printf("%d\n", root->data);
+        printf("%d ", root->data);
     }
     else if (level > 1)
     {
