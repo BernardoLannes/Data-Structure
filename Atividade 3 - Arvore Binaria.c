@@ -120,6 +120,7 @@ void print_tree(tree_node *root, int mode)
         printf("%d ", root->data);
         break;
     case 4: // Length
+
         break;
     default:
         printf("Invalid print mode.");
@@ -265,6 +266,16 @@ void print_level(tree_node *root, int level)
     {
         print_level(root->left, level - 1);
         print_level(root->right, level - 1);
+    }
+}
+
+void traversal_print(tree_node *root)
+{
+    int temp = height(root);
+
+    for (int i = 0; i < temp; i++)
+    {
+        print_level(root, i);
     }
 }
 
