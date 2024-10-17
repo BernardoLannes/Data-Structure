@@ -273,9 +273,10 @@ void traversal_print(tree_node *root)
 {
     int temp = height(root);
 
-    for (int i = 0; i < temp; i++)
+    for (int i = 1; i <= temp; i++)
     {
         print_level(root, i);
+        printf("\n");
     }
 }
 
