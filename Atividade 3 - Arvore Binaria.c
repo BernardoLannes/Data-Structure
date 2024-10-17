@@ -33,6 +33,7 @@ int count_nodes(tree_node *root);
 int is_full(tree_node *root);
 void print_level(tree_node *root, int level);
 int menu(tree_node **root);
+void traversal_print(tree_node *root);
 
 void clearScreen()
 {
@@ -120,7 +121,7 @@ void print_tree(tree_node *root, int mode)
         printf("%d ", root->data);
         break;
     case 4: // Length
-
+        traversal_print(root);
         break;
     default:
         printf("Invalid print mode.");
