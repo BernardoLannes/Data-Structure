@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
 
 #ifdef __linux__
 #include <unistd.h>
@@ -225,7 +224,7 @@ int is_full(tree_node *root)
         int nElements = count_nodes(root);
         int nHeight = height(root);
 
-        if (nElements != pow(2, nHeight) - 1)
+        if (nElements != (1 << nHeight) - 1)
         {
             return 0;
         }
@@ -246,8 +245,8 @@ int menu(tree_node **root)
     printf("\t3. Verificar se um dado esta na arvore\n");
     printf("\t4. Contar numero de elementos da arvore\n");
     printf("\t5. Imprimir os nos folhas\n");
-    printf("\t6. Verificar se a arvore esta balanceada");
-    printf("\t7. Verificar se a arvore eh cheia");
+    printf("\t6. Verificar se a arvore esta balanceada\n");
+    printf("\t7. Verificar se a arvore eh cheia\n");
     printf("\t9. Sair\n");
 
     printf("\nSelecione a opcao: ");
