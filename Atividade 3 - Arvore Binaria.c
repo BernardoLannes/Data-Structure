@@ -247,6 +247,7 @@ int menu(tree_node **root)
     printf("\t5. Imprimir os nos folhas\n");
     printf("\t6. Verificar se a arvore esta balanceada\n");
     printf("\t7. Verificar se a arvore eh cheia\n");
+    printf("\t8. Imprimir por nivel");
     printf("\t9. Sair\n");
 
     printf("\nSelecione a opcao: ");
@@ -358,6 +359,7 @@ int menu(tree_node **root)
         fflush(stdin);
         break;
     case 8:
+        break;
     case 9:
         printf("Fechando o programa...");
         free_tree(*root);
