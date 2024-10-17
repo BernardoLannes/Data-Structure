@@ -9,6 +9,14 @@
 #else
 #endif
 
+typedef struct tree_node
+{
+    int data;
+    struct tree_node *left;
+    struct tree_node *right;
+
+} tree_node;
+
 void clearScreen();
 void mySleep(int tempoMs);
 tree_node *create_tree_node(int data);
@@ -45,14 +53,6 @@ void mySleep(int tempoMs)
 #else
 #endif
 }
-
-typedef struct tree_node
-{
-    int data;
-    struct tree_node *left;
-    struct tree_node *right;
-
-} tree_node;
 
 tree_node *create_tree_node(int data)
 {
