@@ -28,6 +28,7 @@ void free_tree(tree_node *root);
 int count_elements(tree_node *root, int element);
 int height(tree_node *root);
 int count_nodes(tree_node *root);
+int find_height(tree_node *root, int value);
 
 int is_in_tree(tree_node *root, int value);
 int is_balanced(tree_node *root);
@@ -274,6 +275,24 @@ void print_level(tree_node *root, int level)
         print_level(root->left, level - 1);
         print_level(root->right, level - 1);
     }
+}
+
+int find_height(tree_node *root, int value)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    if (root->data == value)
+    {
+        return 0;
+    }
+
+    if (value > root->data)
+    {
+        return 1 + find_height(root->right, value);
+    }
+    return 1 + find_height(root->left, value);
 }
 
 void print_node_level(tree_node *root, int value)
