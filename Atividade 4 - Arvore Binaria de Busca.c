@@ -480,7 +480,7 @@ int menu(tree_node **root)
     case 6:
         printf("Valor a ser inserido: ");
         scanf("%d", &temp);
-        insert_tree_node(root, temp);
+        insert_tree_node(*root, temp);
         printf("\nAperte enter...");
         getchar();
         getchar();
@@ -488,7 +488,7 @@ int menu(tree_node **root)
     case 7:
         printf("Valor a ser removido: ");
         scanf("%d", &temp);
-        remove_tree_node(root, temp);
+        remove_tree_node(*root, temp);
         printf("\nAperte enter...");
         getchar();
         getchar();
