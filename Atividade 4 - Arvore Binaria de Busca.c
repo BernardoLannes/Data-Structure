@@ -388,7 +388,7 @@ int menu(tree_node **root)
     printf("\t4. Imprimir nivel de um no\n");
     printf("\t5. Imprimir folhas menores que um valor\n");
     printf("\t6. Inserir um no\n");
-    printf("\t7. Remover um no\n"); //
+    printf("\t7. Remover um no\n");
     printf("\t8. Sair\n");
 
     printf("\nSelecione a opcao: ");
@@ -486,6 +486,12 @@ int menu(tree_node **root)
         getchar();
         break;
     case 7:
+        printf("Valor a ser removido: ");
+        scanf("%d", &temp);
+        remove_tree_node(root, temp);
+        printf("\nAperte enter...");
+        getchar();
+        getchar();
         break;
     case 8:
         printf("Fechando o programa...");
