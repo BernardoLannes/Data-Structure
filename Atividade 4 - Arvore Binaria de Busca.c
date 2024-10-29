@@ -22,6 +22,7 @@ void mySleep(int tempoMs);
 
 tree_node *create_tree_node(int data);
 tree_node *insert_tree_node(tree_node *root, int data);
+tree_node *remove_tree_node(tree_node *root, int data);
 tree_node *read_tree(FILE *file);
 void free_tree(tree_node *root);
 
@@ -88,6 +89,53 @@ tree_node *insert_tree_node(tree_node *root, int data)
         root->left = insert_tree_node(root->left, data);
     }
 
+    return root;
+}
+
+tree_node *remove_tree_node(tree_node *root, int data)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    if (root->data == data)
+    {
+        if (root->left == NULL && root->right == NULL)
+        {
+            free(root);
+            return NULL;
+        }
+        else if (root->left == NULL)
+        {
+            tree_node *aux = root->right;
+            free(root);
+            return aux;
+        }
+        else if (root->right == NULL)
+        {
+            tree_node *aux = root->left;
+            free(root);
+            return aux;
+        }
+        else
+        {
+            tree_node *aux = root->left;
+            while (aux->right != NULL)
+            {
+                aux = aux->right;
+                root->data = aux->data;
+                root->left = remove_tree_node(root->left, aux->data);
+            }
+        }
+    }
+    else if (data < root->data)
+    {
+        root->left = remove_tree_node(root->left, data);
+    }
+    else
+    {
+        root->right = remove_tree_node(root->right, data);
+    }
     return root;
 }
 
@@ -339,7 +387,7 @@ int menu(tree_node **root)
     printf("\t3. Verificar se um dado esta na arvore\n");
     printf("\t4. Imprimir nivel de um no\n");
     printf("\t5. Imprimir folhas menores que um valor\n");
-    printf("\t6. Inserir um no\n"); //
+    printf("\t6. Inserir um no\n");
     printf("\t7. Remover um no\n"); //
     printf("\t8. Sair\n");
 
