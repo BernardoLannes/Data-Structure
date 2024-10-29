@@ -198,10 +198,10 @@ int is_in_tree(tree_node *root, int value)
 
     if (value > root->data)
     {
-        is_in_tree(root->right, value);
+        return is_in_tree(root->right, value);
     }
 
-    is_in_tree(root->left, value);
+    return is_in_tree(root->left, value);
 }
 
 tree_node *read_tree(FILE *file)
