@@ -338,9 +338,9 @@ int menu(tree_node **root)
     printf("\t2. Imprimir arvore\n");
     printf("\t3. Verificar se um dado esta na arvore\n");
     printf("\t4. Imprimir nivel de um no\n");
-    printf("\t5. Imprimir folhas menores que um valor\n"); //
-    printf("\t6. Inserir um no\n");                        //
-    printf("\t7. Remover um no\n");                        //
+    printf("\t5. Imprimir folhas menores que um valor\n");
+    printf("\t6. Inserir um no\n"); //
+    printf("\t7. Remover um no\n"); //
     printf("\t8. Sair\n");
 
     printf("\nSelecione a opcao: ");
@@ -430,6 +430,12 @@ int menu(tree_node **root)
         getchar();
         break;
     case 6:
+        printf("Valor a ser inserido: ");
+        scanf("%d", &temp);
+        insert_tree_node(root, temp);
+        printf("\nAperte enter...");
+        getchar();
+        getchar();
         break;
     case 7:
         break;
