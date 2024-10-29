@@ -281,18 +281,23 @@ int find_height(tree_node *root, int value)
 {
     if (root == NULL)
     {
-        return 0;
+        return -1;
     }
     if (root->data == value)
     {
         return 0;
     }
 
+    int height = 0;
+
     if (value > root->data)
     {
-        return 1 + find_height(root->right, value);
+        height = find_height(root->right, value);
     }
-    return 1 + find_height(root->left, value);
+
+    height = find_height(root->right, value);
+
+    return (height == -1) ? -1 : height + 1;
 }
 
 void print_node_level(tree_node *root, int value)
