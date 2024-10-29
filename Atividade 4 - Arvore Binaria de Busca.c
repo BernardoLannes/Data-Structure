@@ -37,7 +37,6 @@ int is_full(tree_node *root);
 void print_tree(tree_node *root, int mode);
 void print_leaf_nodes(tree_node *root);
 void print_level(tree_node *root, int level);
-void print_node_level(tree_node *root, int value);
 void traversal_print(tree_node *root);
 
 int menu(tree_node **root);
@@ -300,10 +299,6 @@ int find_height(tree_node *root, int value)
     return (height == -1) ? -1 : height + 1;
 }
 
-void print_node_level(tree_node *root, int value)
-{
-}
-
 void traversal_print(tree_node *root)
 {
     int temp = height(root);
@@ -396,6 +391,16 @@ int menu(tree_node **root)
         getchar();
         break;
     case 4:
+        printf("No procurado: ");
+        scanf("%d", &temp);
+
+        temp = find_height(*root, temp);
+
+        if (temp != -1)
+        {
+            print_level(*root, temp - 1);
+        }
+
         break;
     case 5:
         break;
