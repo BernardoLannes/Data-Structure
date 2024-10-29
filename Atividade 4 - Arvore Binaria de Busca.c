@@ -417,8 +417,17 @@ int menu(tree_node **root)
         {
             print_level(*root, temp - 1);
         }
+        printf("\nAperte enter...");
+        getchar();
+        getchar();
         break;
     case 5:
+        printf("Valor maximo (nao incluso): ");
+        scanf("%d", &temp);
+        print_leafs_under(*root, temp);
+        printf("\nAperte enter...");
+        getchar();
+        getchar();
         break;
     case 6:
         break;
