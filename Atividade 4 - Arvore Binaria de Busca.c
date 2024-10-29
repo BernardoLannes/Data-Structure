@@ -38,6 +38,7 @@ void print_tree(tree_node *root, int mode);
 void print_leaf_nodes(tree_node *root);
 void print_level(tree_node *root, int level);
 void traversal_print(tree_node *root);
+void print_leafs_under(tree_node *root, int value);
 
 int menu(tree_node **root);
 
@@ -310,6 +311,22 @@ void traversal_print(tree_node *root)
     }
 }
 
+void print_leafs_under(tree_node *root, int value)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    if (root->data < value && root->left == NULL && root->right == NULL)
+    {
+        printf("%d ", root->data);
+    }
+
+    print_leafs_under(root->left, value);
+    print_leafs_under(root->right, value);
+}
+
 int menu(tree_node **root)
 {
     int temp;
@@ -320,7 +337,7 @@ int menu(tree_node **root)
     printf("\t1. Ler arvore de arquivo\n");
     printf("\t2. Imprimir arvore\n");
     printf("\t3. Verificar se um dado esta na arvore\n");
-    printf("\t4. Imprimir nivel de um no\n");              //
+    printf("\t4. Imprimir nivel de um no\n");
     printf("\t5. Imprimir folhas menores que um valor\n"); //
     printf("\t6. Inserir um no\n");                        //
     printf("\t7. Remover um no\n");                        //
@@ -400,7 +417,6 @@ int menu(tree_node **root)
         {
             print_level(*root, temp - 1);
         }
-
         break;
     case 5:
         break;
