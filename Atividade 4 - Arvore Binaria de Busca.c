@@ -19,21 +19,27 @@ typedef struct tree_node
 
 void clearScreen();
 void mySleep(int tempoMs);
+
 tree_node *create_tree_node(int data);
 tree_node *insert_tree_node(tree_node *root, int data);
-void free_tree(tree_node *root);
-void print_tree(tree_node *root, int mode);
-int is_in_tree(tree_node *root, int value);
 tree_node *read_tree(FILE *file);
+void free_tree(tree_node *root);
+
 int count_elements(tree_node *root, int element);
-void print_leaf_nodes(tree_node *root);
 int height(tree_node *root);
-int is_balanced(tree_node *root);
 int count_nodes(tree_node *root);
+
+int is_in_tree(tree_node *root, int value);
+int is_balanced(tree_node *root);
 int is_full(tree_node *root);
+
+void print_tree(tree_node *root, int mode);
+void print_leaf_nodes(tree_node *root);
 void print_level(tree_node *root, int level);
-int menu(tree_node **root);
+void print_node_level(tree_node *root, int value);
 void traversal_print(tree_node *root);
+
+int menu(tree_node **root);
 
 void clearScreen()
 {
@@ -270,6 +276,10 @@ void print_level(tree_node *root, int level)
     }
 }
 
+void print_node_level(tree_node *root, int value)
+{
+}
+
 void traversal_print(tree_node *root)
 {
     int temp = height(root);
@@ -362,48 +372,12 @@ int menu(tree_node **root)
         getchar();
         break;
     case 4:
-        printf("Dado procurado: ");
-        scanf("%d", &temp);
-        fflush(stdin);
-
-        clearScreen();
-        printf("O dado aparece %d vezes na arvore", count_elements(*root, temp));
-        printf("\nAperte enter...");
-        getchar();
-        getchar();
         break;
     case 5:
-        printf("Nos folhas: ");
-        print_leaf_nodes(*root);
-        printf("\nAperte enter...");
-        getchar();
-        getchar();
         break;
     case 6:
-        if (is_balanced(*root))
-        {
-            printf("A arvore esta balanceada");
-        }
-        else
-        {
-            printf("A arvore nao esta balanceada");
-        }
-        printf("\nAperte enter...");
-        getchar();
-        getchar();
         break;
     case 7:
-        if (is_full(*root))
-        {
-            printf("\nA arvore eh cheia");
-        }
-        else
-        {
-            printf("A arvore nao eh cheia");
-        }
-        printf("\nAperte enter...");
-        getchar();
-        getchar();
         break;
     case 8:
         printf("Fechando o programa...");
