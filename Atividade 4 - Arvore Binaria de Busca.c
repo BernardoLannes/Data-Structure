@@ -291,12 +291,11 @@ int menu(tree_node **root)
     printf("\t1. Ler arvore de arquivo\n");
     printf("\t2. Imprimir arvore\n");
     printf("\t3. Verificar se um dado esta na arvore\n");
-    printf("\t4. Contar numero de elementos da arvore\n");
-    printf("\t5. Imprimir os nos folhas\n");
-    printf("\t6. Verificar se a arvore esta balanceada\n");
-    printf("\t7. Verificar se a arvore eh cheia\n");
-    printf("\t8. Imprimir por nivel\n");
-    printf("\t9. Sair\n");
+    printf("\t4. Imprimir nivel de um no\n");              //
+    printf("\t5. Imprimir folhas menores que um valor\n"); //
+    printf("\t6. Inserir um no\n");                        //
+    printf("\t7. Remover um no\n");                        //
+    printf("\t8. Sair\n");
 
     printf("\nSelecione a opcao: ");
     scanf("%d", &temp);
@@ -407,16 +406,6 @@ int menu(tree_node **root)
         getchar();
         break;
     case 8:
-        printf("Nivel a ser imprimido: ");
-        scanf("%d", &temp);
-
-        print_level(*root, temp);
-
-        printf("\nAperte enter...");
-        getchar();
-        getchar();
-        break;
-    case 9:
         printf("Fechando o programa...");
         free_tree(*root);
         mySleep(1000);
