@@ -333,19 +333,20 @@ int find_height(tree_node *root, int value)
     }
     if (root->data == value)
     {
-        return 0;
+        return 1;
     }
 
-    int height = 0;
+    int left_height = find_height(root->left, value);
 
-    if (value > root->data)
+    if (left_height != -1)
     {
-        height = find_height(root->right, value);
+        return left_height + 1;
     }
 
-    height = find_height(root->right, value);
-
-    return (height == -1) ? -1 : height + 1;
+    int right_height = find_height(root->right, value);
+    return (right_height != -1)
+               ? right_height + 1
+               : -1;
 }
 
 void traversal_print(tree_node *root)
@@ -463,7 +464,11 @@ int menu(tree_node **root)
 
         if (temp != -1)
         {
-            print_level(*root, temp - 1);
+            print_level(*root, temp);
+        }
+        else
+        {
+            printf("No nao encontrado");
         }
         printf("\nAperte enter...");
         getchar();
