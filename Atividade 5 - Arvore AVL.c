@@ -84,18 +84,21 @@ tree_node *insert_tree_node(tree_node *root, int data)
 {
     if (root == NULL)
     {
-        return create_tree_node(data);
-    }
-
-    if (data > root->data)
-    {
-        root->right = insert_tree_node(root->right, data);
+        create_tree_node(data);
     }
     else
     {
-        root->left = insert_tree_node(root->left, data);
+        if (data <= root->data)
+        {
+            root->left = Inserir(root->left, data);
+            root = rotation_right(root);
+        }
+        else
+        {
+            root->right = Inserir(root->right, data);
+            root = rotation_left(root);
+        }
     }
-
     return root;
 }
 
