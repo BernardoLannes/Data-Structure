@@ -104,47 +104,46 @@ tree_node *insert_tree_node(tree_node *root, int data)
 
 tree_node *remove_tree_node(tree_node *root, int data)
 {
-    if (root == NULL)
+    if (root != NULL)
     {
-        return NULL;
-    }
-    if (root->data == data)
-    {
-        if (root->left == NULL && root->right == NULL)
+        if (root->data == data)
         {
-            free(root);
-            return NULL;
+            if (root->left == NULL && root->right == NULL)
+            {
+                free(root);
+                return NULL;
+            }
+            else if (root->left == NULL || root->right == NULL)
+            {
+                tree_node *aux;
+
+                if (root->left == NULL)
+                    aux = root->right;
+                else
+                    aux = root->left;
+                free(root);
+                return aux;
+            }
+            else
+            {
+                tree_node *biggest_left = root->left;
+                while (biggest_left->right != NULL)
+                    biggest_left = biggest_left->right;
+                root->data = biggest_left->data;
+                root->left = Remover(root->left, root->data);
+                root = rotation_left(root);
+            }
         }
-        else if (root->left == NULL)
+        else if (data < root->data)
         {
-            tree_node *aux = root->right;
-            free(root);
-            return aux;
-        }
-        else if (root->right == NULL)
-        {
-            tree_node *aux = root->left;
-            free(root);
-            return aux;
+            root->left = Remover(root->left, data);
+            root = rotation_left(root);
         }
         else
         {
-            tree_node *aux = root->left;
-            while (aux->right != NULL)
-            {
-                aux = aux->right;
-                root->data = aux->data;
-                root->left = remove_tree_node(root->left, aux->data);
-            }
+            root->right = Remover(root->right, data);
+            root = rotation_right(root);
         }
-    }
-    else if (data < root->data)
-    {
-        root->left = remove_tree_node(root->left, data);
-    }
-    else
-    {
-        root->right = remove_tree_node(root->right, data);
     }
     return root;
 }
