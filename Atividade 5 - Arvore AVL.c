@@ -41,6 +41,13 @@ void print_level(tree_node *root, int level);
 void traversal_print(tree_node *root);
 void print_leafs_under(tree_node *root, int value);
 
+tree_node *rotation_left(tree_node *p);
+tree_node *simple_rotation_left(tree_node *p);
+tree_node *double_rotation_left(tree_node *p);
+tree_node *rotation_right(tree_node *p);
+tree_node *simple_rotation_right(tree_node *p);
+tree_node *double_rotation_right(tree_node *p);
+
 int menu(tree_node **root);
 
 void clearScreen()
@@ -374,6 +381,71 @@ void print_leafs_under(tree_node *root, int value)
 
     print_leafs_under(root->left, value);
     print_leafs_under(root->right, value);
+}
+
+tree_node *rotation_left(tree_node *p)
+{
+    int hl = height(p->left);
+    int hr = altura(p->right);
+
+    if (fabs(hr - hl) > 1)
+    {
+        tree_node *b = p->right;
+        hl = altura(b->left);
+        hr = altura(b->right);
+        if (hl > hr)
+            p = double_rotation_left(p);
+        else
+            p = simple_rotation_left(p);
+    }
+    return p;
+}
+
+tree_node *simple_rotation_left(tree_node *p)
+{
+    tree_node *b = p->right;
+    p->right = b->left;
+    b->left = p;
+    return b;
+}
+
+tree_node *double_rotation_left(tree_node *p)
+{
+    p->right = simple_rotation_right(p->right);
+    p = simple_rotation_left(p);
+    return p;
+}
+
+tree_node *rotation_right(tree_node *p)
+{
+    int hl = altura(p->left);
+    int hr = altura(p->right);
+    if (fabs(hr - hl) > 1)
+    {
+        tree_node *b = p->left;
+        hl = altura(b->left);
+        hr = altura(b->right);
+        if (hr > hl)
+            p = double_rotation_right(p);
+        else
+            p = simple_rotation_right(p);
+    }
+    return p;
+}
+
+tree_node *simple_rotation_right(tree_node *p)
+{
+    tree_node *b = p->left;
+    p->left = b->right;
+    b->right = p;
+    return b;
+}
+
+tree_node *double_rotation_right(tree_node *p)
+{
+    p->left = simple_rotation_left(p->left);
+    p = simple_rotation_right(p);
+    return p;
 }
 
 int menu(tree_node **root)
